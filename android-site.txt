@@ -1,0 +1,73 @@
+CREATE DATABASE LaboratorioReservas;
+
+CREATE TABLE laboratorio(
+    codigolaboratorio int PRIMARY KEY AUTO_INCREMENT,
+    Numerolaboratorio varchar(50),
+    Horario int,
+    Local varchar(50)
+);
+    
+ALTER TABLE laboratorio ADD capacidade varchar(50);
+
+ALTER table laboratorio drop COLUMN capacidade;
+
+ALTER table laboratorio CHANGE COLUMN localizacao varchar(10);
+
+ALTER table laboratorio MODIFY COLUMN localizacao varchar(50);
+
+RENAME TABLE laboratorio to laboratorios;
+
+CREATE TABLE labreserva(
+    Reserva int PRIMARY KEY AUTO_INCREMENT,
+    professor varchar(50) not null,
+    Sala varchar(250) not null,
+    Numeroreserva varchar(100) not null,
+    Disciplina varchar(100)
+);
+
+ALTER TABLE laboratorios ADD Reservinha int;
+
+ALTER TABLE laboratorios MODIFY COLUMN Professor varchar(50) not null;
+
+ALTER TABLE laboratorios ADD CONSTRAINT fk_Reservinha FOREIGN KEY (Reserva) REFERENCES labreserva(Reserva);
+
+INSERT INTO laboratorios (professor, horario, curso, Reservinha) values ("Vinijr", 08:00, "Ads", 123);
+INSERT INTO laboratorios (professor, horario, curso, Reservinha) values("Imperador", 10:00, "computacao", 432);
+INSERT INTO laboratorios (professor, horario, curso, Reservinha) values("Elias", null , "Fisioterapia", 423);
+INSERT INTO laboratorios (professor, horario, curso, Reservinha) values("Angelim", 14:00, "Psicologia", 222);
+INSERT INTO laboratorios (professor, horario, curso, Reservinha) values("Paulinho", null, "Ads", 111);
+INSERT INTO laboratorios (professor, horario, curso, Reservinha ) values("Zico", 16:00, "Computacao", 333);
+INSERT INTO laboratorios (professor, horario, curso, Reservinha ) values("Arrascaeta", null, "Computacao", 444);
+INSERT INTO laboratorios (professor, horario, curso, Reservinha ) values("Gabigol", null, "Ads", 554);
+INSERT INTO laboratorios (professor, horario, curso, Reservinha ) values("Renatoabreu", 20:30, "Computacao", 653);
+INSERT INTO laboratorios (professor, horario, curso, Reservinha) values("Petkovic", 19:00, "Ads", 777);
+
+INSERT INTO labreserva (aluno, curso, matricula, periodo) values ("jaozin", "Computação", "111111111", null);
+INSERT INTO labreserva (aluno, curso, matricula, periodo) values ("Shaolinmatadordeporco", "Computacao", "22222222", "1");
+INSERT INTO labreserva (aluno, curso, matricula, periodo) values ("Flavindopneu", "Ads", "33333333", null);
+INSERT INTO labreserva (aluno, curso, matricula, periodo) values ("Jao", "Computacao ", "44444444", "6");
+INSERT INTO labreserva (aluno, curso, matricula, periodo) values ("Aroldo", "Ads", "55555555", "7");
+INSERT INTO labreserva (aluno, curso, matricula, periodo) values ("Aegon", "Ads", “666666666” null);
+INSERT INTO labreserva (aluno, curso, matricula, periodo) values ("Arya", "Computacao","77777777",”7”);
+INSERT INTO labreserva (aluno, curso, computador, periodo) values ("Chicao", "Computacao", “88888888",”5”);
+INSERT INTO labreserva (aluno, curso, matricula, periodo) values ("Chiquin", "Ads", "99999999", null);
+INSERT INTO labreserva (aluno, curso, matricula, periodo) values ("Gabriel", "Computacao", "12345678", "4");
+
+UPDATE laboratorios set nome = "labzin" where nome = "Laboratorio";
+UPDATE laboratorios set horario = “19:00” where horario = 19:00;
+
+UPDATE labreserva set nome = "Reservalab" where nome = "Reservar";
+UPDATE labreserva set labotarorio = "matricula" where 88888888 = "Chicao";
+
+DELETE FROM laboratorios where professor = "Petkovic";
+DELETE FROM laboratorios where professor = "Paulinho";
+DELETE FROM laboratorios where professor = "Zico";
+DELETE FROM laboratorios where professor = "Gabigol";
+
+DELETE FROM labreserva where aluno = "Aemond";
+DELETE FROM labreserva where aluno = "Chicao";
+DELETE FROM labreserva where aluno = "Chiquin";
+DELETE FROM labreserva where aluno = "Chiquin";
+
+select * from laboratorios ;
+select * from labreserva;
